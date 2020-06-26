@@ -90,8 +90,7 @@ class FrontendAppConfig @Inject()(
     runModeConfiguration.getOptional[Boolean](s"sessionTimeout.timeOutShowDialog").getOrElse(false)
   val keepAliveUrl = loadConfig("sessionTimeout.keepAliveUrl")
   val signOutUrl = loadConfig("sessionTimeout.signOutUrl")
-
-  val gtmContainerId = loadConfig("googleTagManager.containerId")
+  val trackingConsentUrl: String = servicesConfig.getString("tracking-consent-frontend.url")
 
   def fallbackURLForLanguageSwitcher: String = loadConfig("languageSwitcher.fallback.url")
 

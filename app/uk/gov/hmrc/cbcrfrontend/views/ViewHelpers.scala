@@ -17,9 +17,9 @@
 package uk.gov.hmrc.cbcrfrontend.views
 
 import javax.inject.Inject
-
 import uk.gov.hmrc.play.views.html.helpers._
 import uk.gov.hmrc.play.views.html.layouts._
+
 class ViewHelpers @Inject()(
   //copied from uk.gov.hmrc.play.views.html.helpers
   val address: Address,
@@ -53,7 +53,6 @@ class ViewHelpers @Inject()(
   val mainContent: MainContent,
   val mainContentHeader: MainContentHeader,
   val optimizelySnippet: OptimizelySnippet,
-  val gtmSnippet: GTMSnippet,
   val serviceInfo: ServiceInfo,
   val sidebar: Sidebar
 )
