@@ -26,7 +26,7 @@ import uk.gov.hmrc.cbcrfrontend.core.ServiceResponse
 import uk.gov.hmrc.cbcrfrontend.model._
 import uk.gov.hmrc.cbcrfrontend.typesclasses.{CbcrsUrl, ServiceUrl}
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
-import uk.gov.hmrc.http.{HeaderCarrier, HttpClient, HttpResponse, NotFoundException}
+import uk.gov.hmrc.http.{HeaderCarrier, HttpClient, HttpResponse, NotFoundException, UpstreamErrorResponse}
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.control.NonFatal
@@ -67,10 +67,7 @@ class SubscriptionDataService @Inject()(
             )
         }
         .recover {
-          case _: NotFoundException => Right[CBCErrors, Option[SubscriptionDetails]](None)
-          case NonFatal(t) =>
-            logger.error("GET future failed", t)
-            Left[CBCErrors, Option[SubscriptionDetails]](UnexpectedState(t.getMessage))
+          case _ => Right[CBCErrors, Option[SubscriptionDetails]](None)
         }
     )
 
